@@ -1,0 +1,15 @@
+kubectl create -f deployment.yaml
+kubectl get deployments
+kubectl describe deployment myapp-deployment
+kubectl get all
+
+# rollout
+kubectl apply -f deployment.yaml
+kubectl set image deployment myapp-deployment nginx=nginx:1.9.1
+kubectl rollout status deployment.apps/myapp-deployment
+kubectl rollout history deployment.apps/myapp-deployment
+kubectl rollout undo deployment.apps/myapp-deployment
+# scale
+kubectl scale deployment myapp-deployment --replicas=2
+
+kubectl create deployment httpd-frontend --image=httpd:2.4-alpine --replicas=3

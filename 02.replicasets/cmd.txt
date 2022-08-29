@@ -1,0 +1,20 @@
+kubectl create -f replicaset.yaml
+kubectl get replicaset
+kubectl get rs
+kubectl get pods
+kubectl describe replicaset myapp-replicaset
+kubectl delete rs myapp-replicaset
+
+# scale up
+1.tmp file created by k8s
+kubectl edit rs myapp-replicaset
+2.
+kubectl scale rs myapp-replicaset --replicas=2
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+kubectl apply -f pod.yaml
+kubectl get pods
+kubectl describe pod nginx
+
+kubectl run redis --image=redis123 --dry-run=client -o yaml > redis-definition.yaml
+kubectl create -f redis-definition.yaml
+kubectl get pods
+kubectl create -f nginx.yaml
+
+kubectl get pods -o wide
+kubectl edit pod redis

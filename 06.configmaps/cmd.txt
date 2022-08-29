@@ -1,0 +1,1 @@
+kubectl create cm webapp-config-map --from-literal=APP_COLOR=darkblue

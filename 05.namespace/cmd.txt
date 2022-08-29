@@ -1,0 +1,11 @@
+kubectl create -f namespace-dev.yaml
+kubectl create namespace dev
+
+kubectl get pods --namespace=dev
+
+kubectl config set-context $(kubectl config current-context) --namespace=dev
+
+kubectl get pods --all-namespaces
+
+
+
