@@ -1,0 +1,3 @@
+kubectl describe node node01 | grep Taints
+
+kubectl create deployment red --image=nginx --replicas=2 --dry-run=client -o yaml > red.yaml

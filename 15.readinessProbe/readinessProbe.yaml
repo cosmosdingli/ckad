@@ -1,0 +1,11 @@
+readinessProbe:
+  httpGet:
+    path: /api/ready
+    port: 8080
+tcpSocket:
+  port: 3306
+
+exec:
+  command:
+    - cat
+    - /app/is_ready

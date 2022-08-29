@@ -1,0 +1,11 @@
+
+kubectl taint nodes node-name key=value:taint-effect
+
+kubectl taint nodes node1 app=blue:NoSchedule
+
+kubectl taint node node1 spray=mortein:NoSchedule
+
+kubectl run bee --image=nginx --dry-run=client -o yaml > bee.yaml
+
+kubectl taint node controlplane node-role.kubernetes.io/master:NoSchedule-
+node/controlplane untainted

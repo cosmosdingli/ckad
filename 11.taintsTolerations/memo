@@ -1,0 +1,6 @@
+taints are set on nodes and tolerations are set on pods.
+
+!!!node allow/deny any pods
+
+kubectl describe node kubemaster | grep Taint
+!!!master node deny all  nodes
