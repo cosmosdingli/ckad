@@ -1,0 +1,11 @@
+kubectl rollout status deployment/myapp-deployment
+
+kubectl rollout history deployment/myapp-deployment
+
+kubectl apply -f deployment-definition.yaml
+kubectl set image deployment/myapp-deployment nginx=nginx:1.9.1
+
+StrategyType: Recreate/RollingUpdate
+
+k set image deploy frontend simple-webapp=kodekloud/webapp-color:v2
+kubectl edit deployment frontend
