@@ -1,0 +1,9 @@
+kubectl create ingress simple --rule="foo.com/bar=svc1:8080,tls=my-cert"
+kubectl create ingress ingress-pay -n critical-space --rule="/pay=pay-service:8282"
+
+kubectl create ingress ingress-wear-watch -n app-space --rule="/wear=wear-service:8080" --rule="/watch=video-service:8080"
+
+
+annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
