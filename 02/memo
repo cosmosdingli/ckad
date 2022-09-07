@@ -1,0 +1,58 @@
+alias k=kubectl
+po pods
+rs replicasets
+deploy deployments
+cm configmaps
+
+
+
+
+
+
+$ kubectl run NAME --image=image [--env="key=value"] [--port=port] [--dry-run=server|client] [--overrides=inline-json] [--command] -- [COMMAND] [args...]
+k run nginx --image=nginx
+
+k get po --no-headers | wc -l
+k get po -A
+
+k describe po nginx
+
+k delete rs replicaset-1 replicaset-2
+
+k scale rs new-replica-set --replicas=5
+k -n finance run redis --image=redis
+
+k create svc clusterip redis-service --tcp=6379:6379
+k create deploy webapp --image=kodekloud/webapp-color --replicas=3
+k run custom-nginx --image=nginx --dry-run=client -o yaml > po.yaml
+k -n dev-ns create deploy redis-deploy --image=redis --replicas=2
+
+#If true, create a ClusterIP service associated with the pod. Requires --port.
+k run httpd --image=httpd:alpine --port=80 --expose=true 
+
+#Start the nginx pod using the default command, but use custom arguments (arg1 .. argN) for that command
+kubectl run nginx --image=nginx -- <arg1> <arg2> ... <argN>
+
+#Start the nginx pod using a different command and custom arguments
+kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>
+
+#Create a new config map named my-config with key1=config1 and key2=config2
+kubectl create configmap my-config --from-literal=key1=config1 --from-literal=key2=config2
+k create cm webapp-config-map --from-literal=APP_COLOR=darkblue
+
+#Create a new secret named my-secret with key1=supersecret and key2=topsecret
+kubectl create secret generic my-secret --from-literal=key1=supersecret --from-literal=key2=topsecret
+kubectl create secret generic db-secret --from-literal=DB_Host=sql01 --from-literal=DB_User=root --from-literal=DB_Password=password123
+
+#exec
+#Execute a command in a container.
+k exec ubuntu-sleeper -- whoami
+
+#Force replace, delete and then re-create the resource
+kubectl replace --force -f ./pod.json
+k replace --force -f /tmp/kubectl-edit-2138822016.yaml
+
+# 
+k replace --force -f /tmp/kubectl-edit-2138822016.yaml
+
+#Service Account
