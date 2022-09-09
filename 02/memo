@@ -1,19 +1,8 @@
-alias k=kubectl
-po pods
-rs replicasets
-deploy deployments
-cm configmaps
-
-
-
-
-
-
-$ kubectl run NAME --image=image [--env="key=value"] [--port=port] [--dry-run=server|client] [--overrides=inline-json] [--command] -- [COMMAND] [args...]
 k run nginx --image=nginx
 
 k get po --no-headers | wc -l
 k get po -A
+k get po -o yaml
 
 k describe po nginx
 
@@ -56,3 +45,32 @@ k replace --force -f /tmp/kubectl-edit-2138822016.yaml
 k replace --force -f /tmp/kubectl-edit-2138822016.yaml
 
 #Service Account
+#Taints and Tolerations
+kubectl describe node node01 | grep -i taints
+#Update node 'foo' with a taint with key 'dedicated' and value 'special-user' and effect 'NoSchedule' 
+# If a taint with that key and effect already exists, its value is replaced as specified
+kubectl taint nodes foo dedicated=special-user:NoSchedule
+kubectl taint nodes node01 spray=mortein:NoSchedule
+#Remove from node 'foo' the taint with key 'dedicated' and effect 'NoSchedule' if one exists
+kubectl taint nodes foo dedicated:NoSchedule-
+# Remove from node 'foo' all the taints with key 'dedicated'
+kubectl taint nodes foo dedicated-
+kubectl label nodes node01 color=blue
+
+# Show metrics for all nodes
+kubectl top node
+
+kubectl get pods --selector env=dev
+
+# ingress networking -1
+k get ingress -A
+k -n app-space describe ingress ingress-wear-watch 
+# Create a single ingress called 'simple' that directs requests to foo.com/bar to svc # svc1:8080 with a tls secret "my-cert"
+kubectl create ingress simple --rule="foo.com/bar=svc1:8080,tls=my-cert"
+k -n critical-space create ingress ingress-pay --rule="/pay=pay-service:8282"
+
+k -n ingress-space get deploy
+k -n ingress-space expose deploy ingress-controller --name ingress --port=80 --target-port=80 --type NodePort
+
+k -n app-space create ingress ingress-wear-watch --rule="/wear=wear-service:8080" --rule="/watch=video-service:8080"
+# persistent volumes

@@ -1,0 +1,8 @@
+alias k=kubectl
+po pods
+rs replicasets
+deploy deployments
+cm configmaps
+sa serviceaccount
+netpol networkpolicy
+
