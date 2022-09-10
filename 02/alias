@@ -5,4 +5,5 @@ deploy deployments
 cm configmaps
 sa serviceaccount
 netpol networkpolicy
-
+pv persistentvolume
+sc storageclass

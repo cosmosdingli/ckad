@@ -1,0 +1,17 @@
+docker images
+docker build -t xx .
+docker run -p 8282:8080 webapp-color
+
+$ docker run python:3.6 cat /etc/*release*
+PRETTY_NAME="Debian GNU/Linux 11 (bullseye)"
+NAME="Debian GNU/Linux"
+VERSION_ID="11"
+VERSION="11 (bullseye)"
+VERSION_CODENAME=bullseye
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+
+# modify FROM python:3.6  → 3.6-alpine to reduce size.!!
+
