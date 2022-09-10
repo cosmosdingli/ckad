@@ -1,0 +1,22 @@
+k explain job
+
+curl -LO https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert
+chmod +x kubectl-convert 
+mv kubectl-convert /usr/local/bin/kubectl-convert
+
+kubectl-convert -f ingress-old.yaml --output-version networking.k8s.io/v1 > ingress-new.yaml
+kubectl get ing ingress-space -o yaml | grep apiVersion
+
+k scale deploy frontend-v2 --replicas=1
+
+cat /etc/*release*
+
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm search repo joomla
+helm repo list
+helm install bravo bitnami/drupal
+helm list
+helm uninstall bravo
+helm pull --untar bitnami/apache
+
+helm install mywebapp ./apache
