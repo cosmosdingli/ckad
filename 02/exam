@@ -1,0 +1,4 @@
+kubectl config use-context KSMV00201
+k get secrets -n demo
+k get secrets xx -n demo -o yaml | yq r - data.password > /home/candidate/pass.txt
+k get secrets xx -n demo -o yaml | yq r - data.username | base64 -d > /home/candidate/user.txt.cpt

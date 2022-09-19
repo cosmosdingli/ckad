@@ -1,0 +1,2 @@
+// Change pod's image to nginx:1.7.1. Observe that the container will be restarted as soon as the image gets pulled
+kubectl set image pod/nginx nginx=nginx:1.7.1
