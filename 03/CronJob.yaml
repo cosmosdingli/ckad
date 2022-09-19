@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  creationTimestamp: null
+  name: time-limited-job
+spec:
+  activeDeadlineSeconds: 12 # add this line
+  startingDeadlineSeconds: 17 # add this line
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+      name: time-limited-job
+    spec:
+      template:
+        metadata:
+          creationTimestamp: null
+        spec:
+          containers:
+          - args:
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster
+            image: busybox
+            name: time-limited-job
+            resources: {}
+          restartPolicy: Never
+  schedule: '* * * * *'
+status: {}
